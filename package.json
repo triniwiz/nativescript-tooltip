@@ -1,6 +1,6 @@
 {
   "name": "nativescript-tooltip",
-  "version": "1.0.1",
+  "version": "2.1.0",
   "description": "NativeScript plugin to create tooltips",
   "main": "tooltip",
   "typings": "index.d.ts",

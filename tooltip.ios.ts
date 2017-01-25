@@ -2,12 +2,14 @@ import {Color} from "color";
 import {ToolTipConfig} from "./tooltip.common";
 export class ToolTip {
     private tip: AMPopTip;
-
+    private config:ToolTipConfig;
+    private view:any;
     constructor(view: any, config: ToolTipConfig) {
         this.tip = AMPopTip.popTip();
         this.tip.shouldDismissOnTap = true;
+        this.view = view;
         const ap = AMPopTip.appearance();
-
+        this.config = config;
         if (config.backgroundColor) {
             ap.popoverColor = new Color(config.backgroundColor).ios;
         }
@@ -23,6 +25,11 @@ export class ToolTip {
         if(config.delay){
             ap.delayIn = NSDateInterval.alloc().duration(config.delay)
         }
+
+    }
+    show(){
+        let config = this.config;
+        let view = this.view;
         let pos;
         switch (config.position) {
             case "left":
@@ -44,14 +51,32 @@ export class ToolTip {
         }
 
         if (config.viewType && config.viewType === "native" && config.duration) {
-            this.tip.showTextDirectionMaxWidthInViewFromFrameDuration(config.text, pos, config.width | 400, view, view.frame, (config.duration / 1000));
-        } else if (config.viewType && config.viewType === "native") {
-            this.tip.showTextDirectionMaxWidthInViewFromFrame(config.text, pos, config.width | 400, view.ios, view.ios.frame);
-        } else if(config.duration){
-            this.tip.showTextDirectionMaxWidthInViewFromFrameDuration(config.text, pos, config.width | 400, view.ios, view.ios.frame, (config.duration / 1000))
-        }else {
-            this.tip.showTextDirectionMaxWidthInViewFromFrame(config.text, pos, config.width | 400, view.ios, view.ios.frame);
+            if (!config.width) {
+                config.width = 400;
+            }
+            this.tip.showTextDirectionMaxWidthInViewFromFrameDuration(config.text, pos, this.config.width, view, view.frame, (config.duration / 1000));
         }
+        else if (config.viewType && config.viewType === "native") {
+            if (!config.width) {
+                config.width = 400;
+            }
+            this.tip.showTextDirectionMaxWidthInViewFromFrame(config.text, pos, config.width, view, view.frame);
+        }
+        else if (config.duration) {
+            if (!config.width) {
+                config.width = 400;
+            }
+            this.tip.showTextDirectionMaxWidthInViewFromFrameDuration(config.text, pos, config.width, view.ios, view.ios.frame, (config.duration / 1000));
+        }
+        else {
+            if (!config.width) {
+                config.width = 400;
+            }
+            this.tip.showTextDirectionMaxWidthInViewFromFrame(config.text, pos, config.width, view.ios, view.ios.frame);
+        }
+    }
 
+    hide(){
+        this.tip.hide();
     }
 }

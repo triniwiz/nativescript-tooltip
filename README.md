@@ -10,12 +10,14 @@
 TypeScript
 ```ts
 import {ToolTip} from "nativescript-tooltip";
-new ToolTip(view,{text:"Some Text"});
+const tip = new ToolTip(view,{text:"Some Text"});
+tip.show();  //.hide()
 ```
 JavaScript
 ```js
 const ToolTip = require("nativescript-tooltip").ToolTip;
-new ToolTip(view,{text:"Some Text"});
+const tip = new ToolTip(view,{text:"Some Text"});
+tip.show();  //.hide()
 ```
 ##Styling
 
@@ -35,12 +37,14 @@ Add the following to your styles.xml in `app/App_Resources/Android/values`
 TypeScript
 ```ts
 import {ToolTip} from "nativescript-tooltip";
-new ToolTip(view,{text:"Some Text",backgroundColor:"pink",textColor:"black"});
+const tip = new ToolTip(view,{text:"Some Text",backgroundColor:"pink",textColor:"black"});
+tip.show();  //.hide()
 ```
 JavaScript
 ```js
 const ToolTip = require("nativescript-tooltip").ToolTip;
-new ToolTip(view,{text:"Some Text",backgroundColor:"pink",textColor:"black"});
+const tip = new ToolTip(view,{text:"Some Text",backgroundColor:"pink",textColor:"black"});
+tip.show();  //.hide()
 ```
 ###Config
 ```ts

@@ -4,6 +4,8 @@ import {HelloWorldModel} from './main-view-model';
 import {ToolTip} from "nativescript-tooltip";
 import {EventData} from "data/observable";
 import * as app from "application";
+import {TextView} from "ui/text-view";
+import {Color} from "color";
 // Event handler for Page 'loaded' event attached in main-page.xml
 export function pageLoaded(args: observable.EventData) {
     // Get the event sender
@@ -11,14 +13,15 @@ export function pageLoaded(args: observable.EventData) {
     page.bindingContext = new HelloWorldModel();
 }
 
-export function pushIt(args: EventData) {
-    new ToolTip(args.object, {
-        text: "This is some random text",
+export function pushIt(args) {
+   const t = new ToolTip(args.object, {
+        text: "Testing le Tester",
         position: "bottom",
-        duration: 2000,
         hideArrow: false,
         textColor: "white",
         backgroundColor: "blue",
-        style: "CustomToolTipLayoutStyle"
-    })
+        style: "CustomToolTipLayoutStyle",
+        width:400
+    });
+    t.show();
 }

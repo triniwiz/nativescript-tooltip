@@ -1,5 +1,6 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
-  <StackLayout>
-    <Button text="Push It!!!" tap="pushIt"></Button>
-  </StackLayout>
+  <GridLayout height="44" columns="auto,*,10">
+    <TextField col="1" text=""></TextField>
+    <Button col="0" text="Push It!!!" tap="pushIt"></Button>
+  </GridLayout>
 </Page>

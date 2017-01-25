@@ -3,6 +3,7 @@ import {ToolTipConfig} from "./tooltip.common";
 declare const android: any, it: any, Math, java;
 export class ToolTip {
     private builder: any;
+    private tip: any;
 
     constructor(view: any, config: ToolTipConfig) {
         const id = Math.floor((Math.random() * 1000) + 1);
@@ -64,9 +65,17 @@ export class ToolTip {
         }
 
         if (config.style) {
-            this.builder.withStyleId(ToolTip.getResource("style",config.style))
+            this.builder.withStyleId(ToolTip.getResource("style", config.style))
         }
-        it.sephiroth.android.library.tooltip.Tooltip.make(app.android.foregroundActivity, this.builder.build()).show();
+        this.tip = it.sephiroth.android.library.tooltip.Tooltip.make(app.android.foregroundActivity, this.builder.build());
+    }
+
+    show() {
+        this.tip.show();
+    }
+
+    hide() {
+        this.tip.hide();
     }
 
     static getResource(type, name) {
