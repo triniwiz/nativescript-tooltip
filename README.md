@@ -1,12 +1,12 @@
 [![npm](https://img.shields.io/npm/v/nativescript-tooltip.svg)](https://www.npmjs.com/package/nativescript-tooltip)
 [![npm](https://img.shields.io/npm/dt/nativescript-tooltip.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-tooltip)
 
-#NativeScript ToolTip
+# NativeScript ToolTip
 
-##Install
+## Install
 `tns plugin add nativescript-tooltip`
 
-##Usage
+## Usage
 TypeScript
 ```ts
 import {ToolTip} from "nativescript-tooltip";
@@ -19,9 +19,9 @@ const ToolTip = require("nativescript-tooltip").ToolTip;
 const tip = new ToolTip(view,{text:"Some Text"});
 tip.show();  //.hide()
 ```
-##Styling
+## Styling
 
-###Android
+### Android
 
 Add the following to your styles.xml in `app/App_Resources/Android/values`
 ```xml
@@ -33,7 +33,7 @@ Add the following to your styles.xml in `app/App_Resources/Android/values`
     </style>
 ```
 
-###IOS
+### IOS
 TypeScript
 ```ts
 import {ToolTip} from "nativescript-tooltip";
@@ -46,7 +46,7 @@ const ToolTip = require("nativescript-tooltip").ToolTip;
 const tip = new ToolTip(view,{text:"Some Text",backgroundColor:"pink",textColor:"black"});
 tip.show();  //.hide()
 ```
-###Config
+### Config
 ```ts
 const config = {
   position?: "left" | "up" | "right" | "down" | "top" | "bottom";;
@@ -63,7 +63,7 @@ const config = {
 }
 ```
 
-#ScreenShots
+# ScreenShots
 Android | IOS
 --------- | ----------
 ![ss](ss/tooltip_android.png?raw=true) | ![splash](ss/tooltip_ios.png?raw=true)
